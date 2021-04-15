@@ -21,7 +21,7 @@ const useStyle = makeStyles((theme) => ({
       },
       "& h1": {
           color: "#64ffda",
-          margin: "0 0 30px 4px",
+          margin: "0 0 20px 4px",
           fontSize: "clamp(14px, 5vw, 16px)",
           fontWeight: 400,
           fontFamily: "monospace",
@@ -35,6 +35,9 @@ const useStyle = makeStyles((theme) => ({
         "& p": {
             margin: "20px 0px 0px",
             maxWidth: 500,
+            lineHeight: "1.8",
+            wordSpacing: "3px",
+            fontSize: "clamp(14px, 5vw, 16px)",
             "& a":{
                 display: "inline-block",
                 textDecoration: "none",
@@ -80,6 +83,12 @@ const useStyle = makeStyles((theme) => ({
     cursor: "pointer",
     transition: "all 0.25s cubic-bezier(0.645,0.045,0.355,1)",
     marginTop: 50,
+    "&:hover":{
+      backgroundColor: "rgba(100,255,218,0.1)",
+    }
+  },
+  button: {
+    marginTop: 50,
   }
 }));
 function HeroSection() {
@@ -103,7 +112,7 @@ function HeroSection() {
           focused on building accessible, human-centered products.
         </p>
       </div>
-      <div className={classes.content}>
+      <div className={classes.button}>
         <a href="mailto:brittany.chiang@gmail.com" className={classes.emailLink}>
           Get In Touch
         </a>
