@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar"
 import RightBar from "./components/RightBar";
 import Hidden from '@material-ui/core/Hidden';
 import "./style.css"
+import AboutSection from "./components/AboutSection";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         
           <main>
             <HeroSection />
+            <AboutSection />
           </main>
       </div>
     </>
