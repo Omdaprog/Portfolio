@@ -62,17 +62,36 @@ const useStyle = makeStyles((theme) => ({
         paddingTop:"70%",
         position: "relative",
         right: 50,
-        width: "110%"
+        width: "110%",
+        "&::before": {
+            content: '""',
+            background: "rgb(0 64 255 / 32%)",
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+            top: 0,
+            right: 0,
+            transition: "all 0.25s cubic-bezier(0.645,0.045,0.355,1)",
+        },
+        "&:hover::before": {
+            backgroundColor: "transparent"
+        }
     }
 
 }))
 
 
-function ProjectItem({item}) {
+function ProjectItem({item, key}) {
     const classes = useStyle()
-    const info = item[0] 
+    const info = item
     return (
+        <>
+        {key % 2 == 0 
+        ? 
         <Grid container>
+            <Grid item md={6}>
+                <div className={classes.projectBackground} style={{backgroundImage:`url('${info.image}')`}}></div>
+            </Grid>
             <Grid item md={6}>
                 <Grid 
                     container
@@ -102,10 +121,12 @@ function ProjectItem({item}) {
                     </div>
                 </Grid>
             </Grid>
-            <Grid item md={6}>
-                <div className={classes.projectBackground} style={{backgroundImage:`url('${info.image}')`}}></div>
-            </Grid>
+            
         </Grid>
+        :
+        console.log(false) }
+        </>
+        
     )
 }
 

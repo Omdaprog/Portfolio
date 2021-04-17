@@ -57,7 +57,9 @@ function ProjectSection() {
         <section className={classes.section} >
             <h2 className={classes.title}>Some Things I’ve Built</h2>
             
-            <ProjectItem item={projects}/>
+            {projects.map((project, index) => (
+                <ProjectItem key={index} item={project}/>
+            ))}
             
         </section>
     )
