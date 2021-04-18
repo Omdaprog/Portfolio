@@ -6,6 +6,7 @@ import Hidden from '@material-ui/core/Hidden';
 import "./style.css"
 import AboutSection from "./components/sections/AboutSection";
 import ProjectSection from "./components/sections/ProjectSection";
+import ContactSection from "./components/sections/ContactSection";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <HeroSection />
             <AboutSection />
             <ProjectSection />
+            <ContactSection />
           </main>
       </div>
     </>
