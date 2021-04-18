@@ -2,8 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyle = makeStyles((theme) => ({
   section: {
-    margin: "0px Auto",
-    padding: "100px 0px",
+    margin: "0px Auto 200px",
     maxWidth: 600,
     textAlign: "center",
     "& p": {
@@ -45,6 +44,10 @@ const useStyle = makeStyles((theme) => ({
     cursor: "pointer",
     position: "relative",
     top: 50,
+    transition: "all 0.25s cubic-bezier(0.645,0.045,0.355,1)",
+    "&:hover": {
+        backgroundColor: "rgba(100,255,218,0.1)"
+    }
   }
 }));
 

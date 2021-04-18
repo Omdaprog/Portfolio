@@ -7,6 +7,7 @@ import "./style.css"
 import AboutSection from "./components/sections/AboutSection";
 import ProjectSection from "./components/sections/ProjectSection";
 import ContactSection from "./components/sections/ContactSection";
+import Footer from "./components/sections/Footer";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <ProjectSection />
             <ContactSection />
           </main>
+        <Footer />
       </div>
     </>
   );
