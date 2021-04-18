@@ -51,14 +51,32 @@ function ProjectSection() {
             techList: ["Next.js","Chart.js","GitHub API","OctoProfile"],
             github: "",
             link: "",
-        }
+        },
+        {
+            image : "https://brittanychiang.com/static/76c828e964233651d4fb75f911746c90/47203/octoprofile.webp",
+            title: "OctoProfile",
+            discription: "A nicer look at your GitHub profile and repository stats with data visualizations of your top languages and stars. Sort through your top repos by number of stars, forks, and size.",
+            techList: ["Next.js","Chart.js","GitHub API","OctoProfile"],
+            github: "",
+            link: "",
+        },
+        {
+            image : "https://brittanychiang.com/static/76c828e964233651d4fb75f911746c90/47203/octoprofile.webp",
+            title: "OctoProfile",
+            discription: "A nicer look at your GitHub profile and repository stats with data visualizations of your top languages and stars. Sort through your top repos by number of stars, forks, and size.",
+            techList: ["Next.js","Chart.js","GitHub API","OctoProfile"],
+            github: "",
+            link: "",
+        },
     ]
     return (
         <section className={classes.section} >
             <h2 className={classes.title}>Some Things I’ve Built</h2>
             
             {projects.map((project, index) => (
-                <ProjectItem key={index} item={project}/>
+                <div style={{margin: "5% 0 10% 0"}}>
+                    <ProjectItem key={index} even={(index % 2 === 0 )? (true) : (false)} item={project}/>
+                </div>
             ))}
             
         </section>
