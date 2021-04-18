@@ -135,7 +135,7 @@ function AboutSection() {
   return (
     <section className={classes.section}>
       <h2 className={classes.title}>About Me</h2>
-      <Grid container spacing={8}>
+      <Grid container spacing={8} justify="center">
         <Grid item md={7}>
           <div className={classes.content}>
             <p>
@@ -201,7 +201,7 @@ function AboutSection() {
             </ul>
           </div>
         </Grid>
-        <Grid item md={5}>
+        <Grid item md={5} sm={8} xs={11}>
           {/* animate with framer motion */}
             <div className={classes.imageContainer}>
                 <div className={classes.imageBorder}></div>

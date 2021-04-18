@@ -8,13 +8,14 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Hidden from "@material-ui/core/Hidden";
 import MenuIcon from '@material-ui/icons/Menu';
+import { useViewportScroll } from "framer-motion";
 
 const useStyles = makeStyles((theme) => ({
   logo: {
@@ -50,7 +51,9 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: "3%",
     paddingTop: 16,
     paddingBottom: 10,
-
+    backdropFilter: "blur(11px)",
+    backgroundColor: "rgba(10, 25, 47, 0.85)",
+    
     "&.MuiToolbar-root": {
       justifyContent: "space-between",
     },
@@ -65,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
     padding: 10,
     fontSize: 13,
     letterSpacing: 0.05 + "em",
-    color: "#8892b0",
+    color: "#ccd6f6",
     transition: "0.2s ease",
     cursor: "pointer",
     "&:hover": {
@@ -91,35 +94,35 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+
+
 function Navbar() {
   // change navbar background
-  const [navBar, setNavbar] = useState(true ? window.innerWidth <= 570 : false);
+
+  const [navBar, setNavbar] = useState(false);
   const changeBackground = () => {
-    if (window.scrollY >= 80 || Width <= 568) {
+    if (window.scrollY >= 80 ) {
       setNavbar(true);
     } else {
       setNavbar(false);
     }
   };
+  useEffect(() => {
+    if (window.scrollY < 80 ) {
+      setNavbar(false);
+    }
+  }, [window.scrollY ])
 
   window.addEventListener("scroll", changeBackground);
+
+
+  
+  
+  const classes = useStyles();
+  
   const [state, setState] = useState({
     left: false,
   });
-
-  // change logo position
-  const [Width, setWith] = useState(window.innerWidth);
-  const currnetWith = () => {
-    setWith(window.innerWidth);
-  };
-  window.addEventListener("resize", currnetWith);
-
-  // material Ui classes
-  const stylesProps = {
-    logoWidth: Width,
-  };
-  const classes = useStyles(stylesProps);
-
   const toggleDrawer = (anchor, open) => (event) => {
     if (
       event.type === "keydown" &&
@@ -165,8 +168,7 @@ function Navbar() {
   );
   return (
     <div>
-      <header>
-        <nav>
+
           {["left"].map((anchor) => (
             <Fragment key={anchor}>
               <Drawer
@@ -181,7 +183,7 @@ function Navbar() {
           <AppBar
             elevation={0}
             color="transparent"
-            style={{ transition: 0.5 + "s" }}
+            style={{ width: "100%",boxShadow: `${navBar ? "0 10px 30px -10px rgba(2,12,27,0.7)" : "none" }`, }}
             position="fixed"
           >
             <Toolbar className={classes.navbarPadding}>
@@ -230,17 +232,12 @@ function Navbar() {
                     <a
                       className={classes.navbarLink}
                     >
-                      <span>01.</span>Experiance
+                      <span>02.</span>Work
                     </a>
                     <a
                       className={classes.navbarLink}
                     >
-                      <span>01.</span>Work
-                    </a>
-                    <a
-                      className={classes.navbarLink}
-                    >
-                      <span>01.</span>Contact
+                      <span>03.</span>Contact
                     </a>
                     <button className={classes.navbarButton}>
                         <a className={classes.navbarLink} href="">
@@ -258,8 +255,6 @@ function Navbar() {
               </div>
             </Toolbar>
           </AppBar>
-        </nav>
-      </header>
     </div>
   );
 }

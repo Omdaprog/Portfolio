@@ -43,7 +43,7 @@ const useStyle = makeStyles((theme) => ({
             width: 24,
         },
         "& li a": {
-            color: "#a8b2d1",
+            color: "#8892b0",
         }
     },
   },
