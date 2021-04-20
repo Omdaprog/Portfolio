@@ -14,8 +14,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Hidden from "@material-ui/core/Hidden";
-import MenuIcon from '@material-ui/icons/Menu';
-import { useViewportScroll } from "framer-motion";
+import MenuIcon from "@material-ui/icons/Menu";
+import { motion } from "framer-motion";
 
 const useStyles = makeStyles((theme) => ({
   logo: {
@@ -53,15 +53,15 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: 10,
     backdropFilter: "blur(11px)",
     backgroundColor: "rgba(10, 25, 47, 0.85)",
-    
+
     "&.MuiToolbar-root": {
       justifyContent: "space-between",
     },
   },
-  navlinks:{
-    display:"flex",
-    alignContent:"center",
-    justifyContent: "space-between"
+  navlinks: {
+    display: "flex",
+    alignContent: "center",
+    justifyContent: "space-between",
   },
   navbarLink: {
     margin: "0 5px",
@@ -72,54 +72,70 @@ const useStyles = makeStyles((theme) => ({
     transition: "0.2s ease",
     cursor: "pointer",
     "&:hover": {
-      color: "rgb(102, 249, 216)"
+      color: "rgb(102, 249, 216)",
     },
     textDecoration: "none",
     "& span": {
-        color: "rgb(102, 249, 216)"
-    }
-    
+      color: "rgb(102, 249, 216)",
+    },
   },
   navbarButton: {
-        border: "1px solid rgb(102, 249, 216)",
-        backgroundColor: "transparent",
-        padding: "12px 5px",
-        borderRadius: 5,
-        "& a": {
-            color: "rgb(102, 249, 216)"
-        },
-        "&:hover": {
-            backgroundColor: "#f9f9f926"
-        }
+    border: "1px solid rgb(102, 249, 216)",
+    backgroundColor: "transparent",
+    padding: "12px 5px",
+    borderRadius: 5,
+    "& a": {
+      color: "rgb(102, 249, 216)",
     },
+    "&:hover": {
+      backgroundColor: "#f9f9f926",
+    },
+  },
 }));
 
-
-
 function Navbar() {
+  //material ui classes
+  const classes = useStyles();
   // change navbar background
-
   const [navBar, setNavbar] = useState(false);
   const changeBackground = () => {
-    if (window.scrollY >= 80 ) {
+    if (window.scrollY >= 80) {
       setNavbar(true);
     } else {
       setNavbar(false);
     }
   };
   useEffect(() => {
-    if (window.scrollY < 80 ) {
+    if (window.scrollY < 80) {
       setNavbar(false);
     }
-  }, [window.scrollY ])
+  }, [window.scrollY]);
 
   window.addEventListener("scroll", changeBackground);
 
+  //Framer motion 
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        ease: [0.645, 0.045, 0.355, 1],
+        staggerChildren: 0.3,
+        delay: 0.5
+      }
+    }
+  }
   
-  
-  const classes = useStyles();
-  
+  const item = {
+    hidden: { opacity: 0 },
+    show: { opacity : 1 }
+  }
+
+
+
+
+
   const [state, setState] = useState({
     left: false,
   });
@@ -168,93 +184,108 @@ function Navbar() {
   );
   return (
     <div>
-
-          {["left"].map((anchor) => (
-            <Fragment key={anchor}>
-              <Drawer
-                anchor={anchor}
-                open={state[anchor]}
-                onClose={toggleDrawer(anchor, false)}
-              >
-                {list(anchor)}
-              </Drawer>
-            </Fragment>
-          ))}
-          <AppBar
-            elevation={0}
-            color="transparent"
-            style={{ width: "100%",boxShadow: `${navBar ? "0 10px 30px -10px rgba(2,12,27,0.7)" : "none" }`, }}
-            position="fixed"
+      {["left"].map((anchor) => (
+        <Fragment key={anchor}>
+          <Drawer
+            anchor={anchor}
+            open={state[anchor]}
+            onClose={toggleDrawer(anchor, false)}
           >
-            <Toolbar className={classes.navbarPadding}>
+            {list(anchor)}
+          </Drawer>
+        </Fragment>
+      ))}
+      <AppBar
+        elevation={0}
+        color="transparent"
+        style={{
+          width: "100%",
+          boxShadow: `${
+            navBar ? "0 10px 30px -10px rgba(2,12,27,0.7)" : "none"
+          }`,
+        }}
+        position="fixed"
+      >
+        <Toolbar className={classes.navbarPadding}>
+          <IconButton
+            component={motion.div}
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.75, ease: [0.645, 0.045, 0.355, 1] }}
+            className={classes.menuButton}
+          >
+            <svg
+              id="logo"
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+              viewBox="0 0 84 96"
+              className={classes.logo}
+            >
+              <title>Logo</title>
+              <g transform="translate(-8.000000, -2.000000)">
+                <g transform="translate(11.000000, 5.000000)">
+                  <path
+                    d="M45.691667,45.15 C48.591667,46.1 50.691667,48.95 50.691667,52.2 C50.691667,57.95 46.691667,61 40.291667,61 L28.541667,61 L28.541667,30.3 L39.291667,30.3 C45.691667,30.3 49.691667,33.15 49.691667,38.65 C49.691667,41.95 47.941667,44.35 45.691667,45.15 Z M33.591667,43.2 L39.241667,43.2 C42.791667,43.2 44.691667,41.85 44.691667,38.95 C44.691667,36.05 42.791667,34.8 39.241667,34.8 L33.591667,34.8 L33.591667,43.2 Z M33.591667,47.5 L33.591667,56.5 L40.191667,56.5 C43.691667,56.5 45.591667,54.75 45.591667,52 C45.591667,49.2 43.691667,47.5 40.191667,47.5 L33.591667,47.5 Z"
+                    fill="currentColor"
+                  ></path>
+                  <polygon
+                    id="Shape"
+                    stroke="currentColor"
+                    stroke-width="5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    points="39 0 0 22 0 67 39 90 78 68 78 23"
+                  ></polygon>
+                </g>
+              </g>
+            </svg>
+          </IconButton>
+
+          <div className={classes.navlinks}>
+            <Hidden xsDown>
+              <Typography 
+                component={motion.div}
+                variants={container}
+                initial="hidden"
+                animate="show"
+                className={classes.next_to_title}
+                >
+                <motion.a 
+                  variants={item}
+                  className={classes.navbarLink}>
+                  <span>01.</span>About
+                </motion.a>
+                <motion.a 
+                  variants={item}
+                  className={classes.navbarLink}>
+                  <span>02.</span>Work
+                </motion.a>
+                <motion.a 
+                  variants={item}
+                  className={classes.navbarLink}>
+                  <span>03.</span>Contact
+                </motion.a>
+                <motion.button 
+                  variants={item}
+                  className={classes.navbarButton}>
+                  <a className={classes.navbarLink} href="">
+                    Resume
+                  </a>
+                </motion.button>
+              </Typography>
+            </Hidden>
+            <Hidden smUp>
               <IconButton
-                onClick={toggleDrawer("left", true)}
-                edge="start"
+                edge="end"
                 className={classes.menuButton}
-                color="inherit"
                 aria-label="menu"
               >
-                <svg
-                  id="logo"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  viewBox="0 0 84 96"
-                  className={classes.logo}
-                >
-                  <title>Logo</title>
-                  <g transform="translate(-8.000000, -2.000000)">
-                    <g transform="translate(11.000000, 5.000000)">
-                      <path
-                        d="M45.691667,45.15 C48.591667,46.1 50.691667,48.95 50.691667,52.2 C50.691667,57.95 46.691667,61 40.291667,61 L28.541667,61 L28.541667,30.3 L39.291667,30.3 C45.691667,30.3 49.691667,33.15 49.691667,38.65 C49.691667,41.95 47.941667,44.35 45.691667,45.15 Z M33.591667,43.2 L39.241667,43.2 C42.791667,43.2 44.691667,41.85 44.691667,38.95 C44.691667,36.05 42.791667,34.8 39.241667,34.8 L33.591667,34.8 L33.591667,43.2 Z M33.591667,47.5 L33.591667,56.5 L40.191667,56.5 C43.691667,56.5 45.591667,54.75 45.591667,52 C45.591667,49.2 43.691667,47.5 40.191667,47.5 L33.591667,47.5 Z"
-                        fill="currentColor"
-                      ></path>
-                      <polygon
-                        id="Shape"
-                        stroke="currentColor"
-                        stroke-width="5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        points="39 0 0 22 0 67 39 90 78 68 78 23"
-                      ></polygon>
-                    </g>
-                  </g>
-                </svg>
+                <MenuIcon fontSize="large" />
               </IconButton>
-
-              <div className={classes.navlinks}>
-                <Hidden xsDown>
-                  <Typography className={classes.next_to_title}>
-                    <a
-                      className={classes.navbarLink}
-                    >
-                      <span>01.</span>About
-                    </a>
-                    <a
-                      className={classes.navbarLink}
-                    >
-                      <span>02.</span>Work
-                    </a>
-                    <a
-                      className={classes.navbarLink}
-                    >
-                      <span>03.</span>Contact
-                    </a>
-                    <button className={classes.navbarButton}>
-                        <a className={classes.navbarLink} href="">
-                            Resume
-                        </a>
-                    </button>
-                    
-                  </Typography>
-                </Hidden>
-                <Hidden smUp> 
-                    <IconButton edge="end" className={classes.menuButton}  aria-label="menu">
-                        <MenuIcon fontSize="large"/>
-                    </IconButton>
-                </Hidden>
-              </div>
-            </Toolbar>
-          </AppBar>
+            </Hidden>
+          </div>
+        </Toolbar>
+      </AppBar>
     </div>
   );
 }

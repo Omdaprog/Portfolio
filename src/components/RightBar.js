@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
+import { motion } from "framer-motion";
 
 const useStyle = makeStyles((theme) => ({
   Bar: {
@@ -56,7 +57,11 @@ const useStyle = makeStyles((theme) => ({
 function RightBar() {
   const classes = useStyle();
   return (
-    <div className={classes.Bar}>
+    <motion.div 
+      initial={{ y: 10, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.75, ease: [0.645, 0.045, 0.355, 1], delay:0.8 }}
+      className={classes.Bar}>
       <ul>
         <li>
           <a href="">
@@ -64,7 +69,7 @@ function RightBar() {
           </a>
         </li>
       </ul>
-    </div>
+    </motion.div>
   );
 }
 

@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
+import { motion } from "framer-motion";
 
 const useStyle = makeStyles((theme) => ({
   section: {
@@ -93,31 +94,58 @@ const useStyle = makeStyles((theme) => ({
 }));
 function HeroSection() {
   const classes = useStyle();
+
+  const container = {
+    hidden: { opacity: 0 , y:30},
+    show: {
+      opacity: 1,
+      y:0,
+      transition: {
+        when: "beforeChildren",
+        duration: 0.2,
+        ease: [0.645, 0.045, 0.355, 1],
+        staggerChildren: 0.2,
+        delayChildren: 0.2,
+        delay: 1
+      }
+    }
+  }
+  
+  const item = {
+    hidden: { opacity: 0, y:30 },
+    show: { opacity : 1, y:0 }
+  }
+
+
   return (
-    <section className={classes.section}>
-      <div className={classes.content} >
+    <motion.section 
+      variants={container}
+      initial="hidden"
+      animate="show"
+      className={classes.section}>
+      <motion.div variants={item} className={classes.content} >
         <h1>Hi, my name is</h1>
-      </div>
-      <div className={classes.content}>
+      </motion.div>
+      <motion.div variants={item} className={classes.content}>
         <h2 className={classes.bigheading}>Imed Ben Kalia.</h2>
-      </div>
-      <div className={classes.content}>
+      </motion.div>
+      <motion.div variants={item} className={classes.content}>
         <h3 className={classes.bigheading}>I build things for the web.</h3>
-      </div>
-      <div className={classes.content}>
+      </motion.div>
+      <motion.div variants={item} className={classes.content}>
         <p>
           I'm a Boston-based software engineer who specializes in building (and
           occasionally designing) exceptional digital experiences. Currently,
           I'm an engineer at <a href="https://upstatement.com/">Upstatement</a>{" "}
           focused on building accessible, human-centered products.
         </p>
-      </div>
-      <div className={classes.button}>
+      </motion.div>
+      <motion.div variants={item} className={classes.button}>
         <a href="mailto:brittany.chiang@gmail.com" className={classes.emailLink}>
           Get In Touch
         </a>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
 
