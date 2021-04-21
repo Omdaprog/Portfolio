@@ -120,6 +120,7 @@ function Navbar() {
     show: {
       opacity: 1,
       transition: {
+        when: "beforeChildren",
         ease: [0.645, 0.045, 0.355, 1],
         staggerChildren: 0.3,
         delay: 0.5

@@ -1,5 +1,10 @@
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
+
+
 
 const useStyle = makeStyles((theme) => ({
   section: {
@@ -91,10 +96,10 @@ const useStyle = makeStyles((theme) => ({
       },
     },
   },
-  
+
   imageContainer: {
-      position: "relative",
-      maxWidth: 300,
+    position: "relative",
+    maxWidth: 300,
   },
   imageBorder: {
     border: "2px solid rgb(100, 255, 218)",
@@ -104,9 +109,8 @@ const useStyle = makeStyles((theme) => ({
     top: 30,
     right: -30,
     borderRadius: "1%",
-
   },
-  image:{
+  image: {
     position: "absolute",
     top: 0,
     right: 0,
@@ -124,17 +128,38 @@ const useStyle = makeStyles((theme) => ({
       transition: "all 0.25s cubic-bezier(0.645,0.045,0.355,1)",
     },
     "&:hover::after": {
-      backgroundColor: "transparent"
-    }
+      backgroundColor: "transparent",
+    },
   },
 }));
 
 function AboutSection() {
-  
   const classes = useStyle();
+
+  // Make framer motion animation work when the dom element in-view
+  const containerVarients = {
+    hidden: { y: 30, opacity: 0},
+    visible: { y: 0, opacity: 1},
+  };
+  const controls = useAnimation();
+  const [ref, inView] = useInView();
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+
+    console.log();
+  }, [controls, inView]);
   return (
-    <section className={classes.section}>
-      <h2 className={classes.title}>About Me</h2>
+    <motion.section
+      
+      variants={containerVarients}
+      initial="hidden" 
+      animate={controls}
+      transition={{ duration: 0.75, ease: [0.645, 0.045, 0.355, 1] }}
+      className={classes.section}
+    >
+      <h2 ref={ref} className={classes.title}>About Me</h2>
       <Grid container spacing={8} justify="center">
         <Grid item md={7}>
           <div className={classes.content}>
@@ -203,15 +228,18 @@ function AboutSection() {
         </Grid>
         <Grid item md={5} sm={8} xs={11}>
           {/* animate with framer motion */}
-            <div className={classes.imageContainer}>
-                <div className={classes.imageBorder}></div>
-                <div className={classes.image}>
-                    <img src="https://brittanychiang.com/static/30a645f7db6038f83287d0c6042d3b2b/e9589/me.webp" alt=""/>
-                </div>
+          <div className={classes.imageContainer}>
+            <div className={classes.imageBorder}></div>
+            <div className={classes.image}>
+              <img
+                src="https://brittanychiang.com/static/30a645f7db6038f83287d0c6042d3b2b/e9589/me.webp"
+                alt=""
+              />
             </div>
+          </div>
         </Grid>
       </Grid>
-    </section>
+    </motion.section>
   );
 }
 

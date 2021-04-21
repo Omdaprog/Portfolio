@@ -106,7 +106,7 @@ function HeroSection() {
         ease: [0.645, 0.045, 0.355, 1],
         staggerChildren: 0.2,
         delayChildren: 0.2,
-        delay: 1
+        delay: 1.5
       }
     }
   }
