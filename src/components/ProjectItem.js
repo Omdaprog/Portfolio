@@ -1,5 +1,9 @@
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
+
 const useStyle = makeStyles((theme) => ({
   overline: {
     color: "#64ffda",
@@ -83,11 +87,32 @@ const useStyle = makeStyles((theme) => ({
 function ProjectItem({ item, even }) {
   const classes = useStyle();
   const info = item;
+
+    // Make framer motion animation work when the dom element in-view
+    const containerVarients = {
+      hidden: { y: 30, opacity: 0 },
+      visible: { y: 0, opacity: 1 },
+    };
+    const controls = useAnimation();
+    const [ref, inView] = useInView();
+    useEffect(() => {
+      if (inView) {
+        controls.start("visible");
+      }
+  
+      console.log();
+    }, [controls, inView]);
   return (
     <>
       {even ? (
         
-        <Grid container>
+        <Grid 
+          component={motion.div}
+          variants={containerVarients}
+          initial="hidden"
+          animate={controls}
+          transition={{ duration: 0.75, ease: [0.645, 0.045, 0.355, 1] }}
+          container>
           <Grid item md={6} xs={12}>
             <div 
               className={classes.projectBackground}
@@ -100,7 +125,7 @@ function ProjectItem({ item, even }) {
             <Grid container direction="column" style={{textAlign: "end"}} className={classes.container}>
               <p className={classes.overline}>Featured Project</p>
               <h3>
-                <a href="">{info.title}</a>
+                <a ref={ref} href="">{info.title}</a>
               </h3>
               <div className={classes.discInfo}>
                 <p>{info.discription}</p>
@@ -150,12 +175,18 @@ function ProjectItem({ item, even }) {
           </Grid>
         </Grid>
       ) : (
-        <Grid container>
+        <Grid 
+          component={motion.div}
+          variants={containerVarients}
+          initial="hidden"
+          animate={controls}
+          transition={{ duration: 0.75, ease: [0.645, 0.045, 0.355, 1] }}
+          container>
           <Grid item md={6} xs={12}>
             <Grid container direction="column" className={classes.container}>
               <p className={classes.overline}>Featured Project</p>
               <h3>
-                <a href="">{info.title}</a>
+                <a ref={ref} href="">{info.title}</a>
               </h3>
               <div className={classes.discInfo}>
                 <p>{info.discription}</p>

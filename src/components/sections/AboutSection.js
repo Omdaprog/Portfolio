@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
 
@@ -105,9 +105,9 @@ const useStyle = makeStyles((theme) => ({
     border: "2px solid rgb(100, 255, 218)",
     width: "100%",
     height: 300,
-    position: "relative",
     top: 30,
     right: -30,
+    position: "relative",
     borderRadius: "1%",
   },
   image: {
@@ -135,6 +135,9 @@ const useStyle = makeStyles((theme) => ({
 
 function AboutSection() {
   const classes = useStyle();
+
+  //Border animation
+  const [BorderAnimation, setBorderAnimation] = useState(false)
 
   // Make framer motion animation work when the dom element in-view
   const containerVarients = {
@@ -227,10 +230,13 @@ function AboutSection() {
           </div>
         </Grid>
         <Grid item md={5} sm={8} xs={11}>
-          {/* animate with framer motion */}
+          
           <div className={classes.imageContainer}>
-            <div className={classes.imageBorder}></div>
-            <div className={classes.image}>
+            <motion.div animate={BorderAnimation ? {x:-10, y:-10} : {x:0, y:0}} className={classes.imageBorder}></motion.div>
+            <div 
+              onMouseEnter={()=> setBorderAnimation(true)}
+              onMouseLeave={() => setBorderAnimation(false)}
+              className={classes.image}>
               <img
                 src="https://brittanychiang.com/static/30a645f7db6038f83287d0c6042d3b2b/e9589/me.webp"
                 alt=""
