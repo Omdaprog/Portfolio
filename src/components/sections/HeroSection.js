@@ -19,6 +19,9 @@ const useStyle = makeStyles((theme) => ({
         fontWeight: 600,
         color: "#ccd6f6",
         lineHeight: 1.1,
+        [theme.breakpoints.down("xs")]: {
+          marginBottom: 0, 
+        },
       },
       "& h1": {
           color: "#64ffda",
@@ -26,6 +29,9 @@ const useStyle = makeStyles((theme) => ({
           fontSize: "clamp(14px, 5vw, 16px)",
           fontWeight: 400,
           fontFamily: "monospace",
+          [theme.breakpoints.down("xs")]: {
+            paddingBottom: 15, 
+          },
       },
       
       "& h3": {
@@ -39,6 +45,11 @@ const useStyle = makeStyles((theme) => ({
             lineHeight: "1.8",
             wordSpacing: "3px",
             fontSize: "clamp(14px, 5vw, 16px)",
+            [theme.breakpoints.down("xs")]: {
+              lineHeight: "1.5",
+              wordSpacing: 0.5,
+              marginTop: 13,
+            },
             "& a":{
                 display: "inline-block",
                 textDecoration: "none",
@@ -70,6 +81,9 @@ const useStyle = makeStyles((theme) => ({
   bigheading : {
     margin: 0,
     fontSize: "clamp(40px, 8vw, 80px)",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "clamp(36px, 8vw, 80px)",
+    }
   },
   emailLink: {
     color: "#64ffda",

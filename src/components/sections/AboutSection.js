@@ -109,6 +109,10 @@ const useStyle = makeStyles((theme) => ({
     right: -30,
     position: "relative",
     borderRadius: "1%",
+    [theme.breakpoints.down("xs")]: {
+      width: "95%",
+      height: 235,
+    },
   },
   image: {
     position: "absolute",
