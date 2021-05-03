@@ -11,6 +11,10 @@ const useStyle = makeStyles((theme) => ({
     fontSize: "clamp(12px, 5vw, 14px)",
     fontWeight: 400,
     fontFamily: "monospace",
+    [theme.breakpoints.down("md")]: {
+      marginTop: 15,
+      marginBottom: 12,
+    },
   },
   container: {
     "& h3": {
@@ -66,8 +70,10 @@ const useStyle = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
     paddingTop: "70%",
     position: "relative",
-    
     width: "110%",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
     "&::before": {
       content: '""',
       background: "rgb(0 64 255 / 32%)",
@@ -82,6 +88,14 @@ const useStyle = makeStyles((theme) => ({
       backgroundColor: "transparent",
     },
   },
+  icons :{
+    [theme.breakpoints.down("xs")]: {
+      textAlign:"center",
+      "& a":{
+        margin:"0 4px",
+      }
+    }
+  }
 }));
 
 function ProjectItem({ item, even }) {
@@ -104,7 +118,7 @@ function ProjectItem({ item, even }) {
     }, [controls, inView]);
   return (
     <>
-      {even ? (
+      {(even || (window.innerWidth < 960)) ? (
         
         <Grid 
           component={motion.div}
@@ -122,7 +136,7 @@ function ProjectItem({ item, even }) {
             ></div>
           </Grid>
           <Grid item md={6} xs={12}>
-            <Grid container direction="column" style={{textAlign: "end"}} className={classes.container}>
+            <Grid container direction="column" style={(window.innerWidth < 960) ?{textAlign: "center"}:{textAlign: "end"}} className={classes.container}>
               <p className={classes.overline}>Featured Project</p>
               <h3>
                 <a ref={ref} href="">{info.title}</a>
@@ -130,12 +144,12 @@ function ProjectItem({ item, even }) {
               <div className={classes.discInfo}>
                 <p>{info.discription}</p>
               </div>
-              <ul style={{justifyContent: "flex-end",}}>
+              <ul style={(window.innerWidth < 960) ? {justifyContent: "center",}:{justifyContent: "flex-end",}}>
                 {info.techList.map((tech) => (
                   <li style={{margin: "2% 0 2% 4%"}}>{tech}</li>
                 ))}
               </ul>
-              <div>
+              <div className={classes.icons}>
                 <a href="">
                   <svg
                     style={{marginRight: 0,

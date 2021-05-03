@@ -16,7 +16,7 @@ function App() {
     <>
       <div className="root">
         <Navbar />
-        <Hidden xsDown>
+        <Hidden smDown>
           <LeftBar />
           <RightBar />
         </Hidden>

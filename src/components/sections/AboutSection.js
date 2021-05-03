@@ -109,7 +109,7 @@ const useStyle = makeStyles((theme) => ({
     right: -30,
     position: "relative",
     borderRadius: "1%",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.between(0,375)]: {
       width: "95%",
       height: 235,
     },

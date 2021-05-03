@@ -280,6 +280,8 @@ function Navbar() {
                 edge="end"
                 className={classes.menuButton}
                 aria-label="menu"
+                onClick={toggleDrawer('left', true)} 
+                
               >
                 <MenuIcon fontSize="large" />
               </IconButton>

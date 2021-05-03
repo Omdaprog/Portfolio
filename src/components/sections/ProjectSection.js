@@ -21,6 +21,9 @@ const useStyle = makeStyles((theme) => ({
     fontWeight: 600,
     color: "#ccd6f6",
     lineHeight: 1.1,
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "clamp(23px,5vw,32px)",
+    },
     "&:before": {
       position: "relative",
       bottom: -2,
