@@ -2,7 +2,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import ProjectItem from "../ProjectItem";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { db } from '../../base'
+
 
 const useStyle = makeStyles((theme) => ({
   section: {
@@ -49,38 +51,20 @@ const useStyle = makeStyles((theme) => ({
 
 function ProjectSection() {
   const classes = useStyle();
-  const projects = [
-    {
-      image:
-        "https://brittanychiang.com/static/76c828e964233651d4fb75f911746c90/47203/octoprofile.webp",
-      title: "OctoProfile",
-      discription:
-        "A nicer look at your GitHub profile and repository stats with data visualizations of your top languages and stars. Sort through your top repos by number of stars, forks, and size.",
-      techList: ["Next.js", "Chart.js", "GitHub API", "OctoProfile"],
-      github: "",
-      link: "",
-    },
-    {
-      image:
-        "https://brittanychiang.com/static/76c828e964233651d4fb75f911746c90/47203/octoprofile.webp",
-      title: "OctoProfile",
-      discription:
-        "A nicer look at your GitHub profile and repository stats with data visualizations of your top languages and stars. Sort through your top repos by number of stars, forks, and size.",
-      techList: ["Next.js", "Chart.js", "GitHub API", "OctoProfile"],
-      github: "",
-      link: "",
-    },
-    {
-      image:
-        "https://brittanychiang.com/static/76c828e964233651d4fb75f911746c90/47203/octoprofile.webp",
-      title: "OctoProfile",
-      discription:
-        "A nicer look at your GitHub profile and repository stats with data visualizations of your top languages and stars. Sort through your top repos by number of stars, forks, and size.",
-      techList: ["Next.js", "Chart.js", "GitHub API", "OctoProfile"],
-      github: "",
-      link: "",
-    },
-  ];
+
+  const [projects, setprojects] = useState()
+
+  useEffect(() => {
+    const fetchProject = db.collection("portfolio")
+      .onSnapshot(snap => {
+        let documents = [];
+        snap.forEach(doc => {
+          documents.push({...doc.data(), id: doc.id})
+        });
+        setprojects(documents);
+      })
+    return () => fetchProject();
+  }, [])
 
   // Make framer motion animation work when the dom element in-view
   const containerVarients = {
@@ -106,8 +90,8 @@ function ProjectSection() {
       className={classes.section}
     >
       <h2 ref={ref} className={classes.title}>Some Things I’ve Built</h2>
-
-      {projects.map((project, index) => (
+      {console.log(projects ? projects : false)}
+      {projects ? (projects.map((project, index) => (
         <div style={{ margin: "5% 0 10% 0" }}>
           <ProjectItem
             key={index}
@@ -115,7 +99,8 @@ function ProjectSection() {
             item={project}
           />
         </div>
-      ))}
+      ))) : false}
+      
     </motion.section>
   );
 }
