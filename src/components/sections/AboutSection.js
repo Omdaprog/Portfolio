@@ -3,6 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
+import image from "../../image/image.JPG"
 
 
 
@@ -242,7 +243,7 @@ function AboutSection() {
               onMouseLeave={() => setBorderAnimation(false)}
               className={classes.image}>
               <img
-                src="https://brittanychiang.com/static/30a645f7db6038f83287d0c6042d3b2b/e9589/me.webp"
+                src={image}
                 alt=""
               />
             </div>

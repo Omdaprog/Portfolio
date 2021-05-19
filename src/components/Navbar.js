@@ -25,7 +25,10 @@ const useStyles = makeStyles((theme) => ({
     fill: "none",
   },
   list: {
-    width: 250,
+    width: 245,
+    height: "100%",
+    backgroundColor: "#112240",
+    boxShadow: "-10px 0px 30px -15px rgba(2,12,27,0.7)",
   },
   fullList: {
     width: "auto",
@@ -33,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  
   menuButton: {
     height: 24,
     marginRight: theme.spacing(2),
@@ -91,6 +95,23 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "#f9f9f926",
     },
   },
+  listToggleDrawer:{
+    margin: 10,
+  
+    "& div": {
+      display: "flex",
+    },
+    "& span ,& p": {
+      fontSize: 18,
+      marginRight: 5,
+      color: "rgb(204, 214, 246)",
+    },
+    "& span": {
+      color: "rgb(100, 255, 218)",
+      fontSize: 17,
+    }
+    
+  }
 }));
 
 function Navbar() {
@@ -160,24 +181,14 @@ function Navbar() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+      
+      <List className={classes.listToggleDrawer}>
+        {["About", "Work", "Contact", "Resume"].map((text, index) => (
           <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
+            {(text == "Resume") ? 
+              <ListItemText className={classes.navbarButton} style={{paddingLeft: 10,width:"auto"}} primary={text} />
+              :<ListItemText primary={(index+1+".")} secondary={text}/>
+            }
           </ListItem>
         ))}
       </List>
@@ -188,6 +199,7 @@ function Navbar() {
       {["left"].map((anchor) => (
         <Fragment key={anchor}>
           <Drawer
+            
             anchor={anchor}
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
