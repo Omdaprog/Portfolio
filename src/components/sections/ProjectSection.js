@@ -83,6 +83,7 @@ function ProjectSection() {
 
   return (
     <motion.section
+      id="project"
       variants={containerVarients}
       initial="hidden"
       animate={controls}

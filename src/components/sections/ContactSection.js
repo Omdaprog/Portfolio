@@ -74,6 +74,7 @@ function ContactSection() {
 
   return (
     <motion.section
+      id="contact"
       variants={containerVarients}
       initial="hidden"
       animate={controls}
@@ -89,7 +90,7 @@ function ContactSection() {
         always open. Whether you have a question or just want to say hi, I'll
         try my best to get back to you!
       </p>
-      <a className={classes.button}>Say Hello</a>
+      <a href="mailto:imed.ben.kaliaa@gmail.com" className={classes.button}>Say Hello</a>
     </motion.section> 
   );
 }

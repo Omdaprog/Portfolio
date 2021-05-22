@@ -79,8 +79,8 @@ const useStyle = makeStyles((theme) => ({
       background: "rgb(0 64 255 / 32%)",
       position: "absolute",
       width: "100%",
-      height: "100%",
-      top: 0,
+      height: "79%",
+      top: 33,
       right: 0,
       transition: "all 0.25s cubic-bezier(0.645,0.045,0.355,1)",
     },
@@ -139,7 +139,7 @@ function ProjectItem({ item, even }) {
             <Grid container direction="column" style={(window.innerWidth < 960) ?{textAlign: "center"}:{textAlign: "end"}} className={classes.container}>
               <p className={classes.overline}>Featured Project</p>
               <h3>
-                <a ref={ref} href="">{info.title}</a>
+                <a ref={ref} href={info.link}>{info.title}</a>
               </h3>
               <div className={classes.discInfo}>
                 <p>{info.description}</p>
@@ -150,7 +150,7 @@ function ProjectItem({ item, even }) {
                 ))}
               </ul>
               <div className={classes.icons}>
-                <a href="">
+                <a href={info.github}>
                   <svg
                     style={{marginRight: 0,
                             marginLeft: "3%"}}
@@ -166,7 +166,7 @@ function ProjectItem({ item, even }) {
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                   </svg>
                 </a>
-                <a href="">
+                <a href={info.link}>
                   <svg
                     style={{marginRight: 0,
                             marginLeft: "3%"}}
@@ -200,7 +200,7 @@ function ProjectItem({ item, even }) {
             <Grid container direction="column" className={classes.container}>
               <p className={classes.overline}>Featured Project</p>
               <h3>
-                <a ref={ref} href="">{info.title}</a>
+                <a ref={ref} href={info.link}>{info.title}</a>
               </h3>
               <div className={classes.discInfo}>
                 <p>{info.description}</p>
@@ -211,7 +211,7 @@ function ProjectItem({ item, even }) {
                 ))}
               </ul>
               <div>
-                <a href="">
+                <a href={info.github}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     role="img"
@@ -225,7 +225,7 @@ function ProjectItem({ item, even }) {
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                   </svg>
                 </a>
-                <a href="">
+                <a href={info.link}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     role="img"

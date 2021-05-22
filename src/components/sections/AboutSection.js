@@ -48,32 +48,6 @@ const useStyle = makeStyles((theme) => ({
   content: {
     fontSize: 17,
     wordSpacing: "0.08em",
-    "& a": {
-      display: "inline-block",
-      textDecoration: "none",
-      textDecorationSkipInk: "auto",
-      position: "relative",
-      transition: "all 0.25s cubic-bezier(0.645,0.045,0.355,1)",
-      cursor: "pointer",
-      color: "#64ffda",
-    },
-    "& a:hover": {
-      outline: 0,
-    },
-    "& a::after": {
-      content: '""',
-      display: "block",
-      width: 0,
-      height: 1,
-      position: "relative",
-      bottom: "0.1em",
-      backgroundColor: "#64ffda",
-      transition: "all 0.25s cubic-bezier(0.645,0.045,0.355,1)",
-      opacity: 0.5,
-    },
-    "& a:hover::after": {
-      width: "100%",
-    },
     "& ul": {
       display: "grid",
       gridTemplateColumns: "repeat(2, minmax(140px, 200px))",
@@ -160,7 +134,7 @@ function AboutSection() {
   }, [controls, inView]);
   return (
     <motion.section
-      
+      id="about"
       variants={containerVarients}
       initial="hidden" 
       animate={controls}
@@ -172,65 +146,18 @@ function AboutSection() {
         <Grid item md={7}>
           <div className={classes.content}>
             <p>
-              Hello! My name is Brittany and I enjoy creating things that live
-              on the internet. My interest in web development started back in
-              2012 when I decided to try editing custom Tumblr themes — turns
-              out hacking together a custom reblog button taught me a lot about
-              HTML &amp; CSS!
-            </p>
-            <p>
-              Fast-forward to today, and I've had the privilege of working at{" "}
-              <a
-                href="https://us.mullenlowe.com/"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                an advertising agency
-              </a>
-              ,{" "}
-              <a
-                href="https://starry.com/"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                a start-up
-              </a>
-              ,{" "}
-              <a
-                href="https://www.apple.com/"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                a huge corporation
-              </a>
-              , and{" "}
-              <a
-                href="https://scout.camd.northeastern.edu/"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                a student-led design studio
-              </a>
-              . My main focus these days is building accessible, inclusive
-              products and digital experiences at{" "}
-              <a
-                href="https://upstatement.com/"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                Upstatement
-              </a>{" "}
-              for a variety of clients.
+              From 2018, the moment i produced "Hello World" in the console of my first application, i knew i was hooked into the world of software developer. But software developer has never been "just a job" for me, it's offred an engaging challenge to continually learn and improve my skills in creating hight quality software. 
+              What started with a simple "Hello World" has become a full-fledged passion that only gets more exciting as the years go by. 
             </p>
             <p>Here are a few technologies I've been working with recently:</p>
 
             <ul className="skills-list">
-              <li>JavaScript (ES6+)</li>
-              <li>React</li>
-              <li>Eleventy</li>
-              <li>Vue</li>
-              <li>Node.js</li>
-              <li>WordPress</li>
+              <li>Python</li>
+              <li>ReactJs</li>
+              <li>Django Rest Api</li>
+              <li>CSS</li>
+              <li>Django</li>
+              <li>HTML</li>
             </ul>
           </div>
         </Grid>

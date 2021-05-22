@@ -2,12 +2,8 @@ import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
 import { Fragment, useState, useEffect } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -16,6 +12,8 @@ import IconButton from "@material-ui/core/IconButton";
 import Hidden from "@material-ui/core/Hidden";
 import MenuIcon from "@material-ui/icons/Menu";
 import { motion } from "framer-motion";
+import { Link } from "react-scroll"
+import resume from "../file/resume.pdf"
 
 const useStyles = makeStyles((theme) => ({
   logo: {
@@ -48,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
   next_to_title: {
     flexGrow: 0.05,
+    display: "flex",
   },
   navbarPadding: {
     position: "relative",
@@ -130,7 +129,7 @@ function Navbar() {
     if (window.scrollY < 80) {
       setNavbar(false);
     }
-  }, [window.scrollY]);
+  }, []);
 
   window.addEventListener("scroll", changeBackground);
 
@@ -185,7 +184,7 @@ function Navbar() {
       <List className={classes.listToggleDrawer}>
         {["About", "Work", "Contact", "Resume"].map((text, index) => (
           <ListItem button key={text}>
-            {(text == "Resume") ? 
+            {(text === "Resume") ? 
               <ListItemText className={classes.navbarButton} style={{paddingLeft: 10,width:"auto"}} primary={text} />
               :<ListItemText primary={(index+1+".")} secondary={text}/>
             }
@@ -263,25 +262,55 @@ function Navbar() {
                 animate="show"
                 className={classes.next_to_title}
                 >
-                <motion.a 
+                <motion.div 
                   variants={item}
                   className={classes.navbarLink}>
-                  <span>01.</span>About
-                </motion.a>
-                <motion.a 
+                    <Link
+                      activeClass="active"
+                      to="about"
+                      spy={true}
+                      smooth={true}
+                      offset={-70}
+                      duration={500}
+                    >
+                      <span>01.</span>About
+                    </Link>
+                </motion.div>
+                <motion.div 
                   variants={item}
                   className={classes.navbarLink}>
-                  <span>02.</span>Work
-                </motion.a>
-                <motion.a 
+                    <Link
+                      activeClass="active"
+                      to="project"
+                      spy={true}
+                      smooth={true}
+                      offset={-70}
+                      duration={500}
+                    >
+                      <span>02.</span>Work
+                    </Link>
+
+                </motion.div>
+                <motion.div 
                   variants={item}
                   className={classes.navbarLink}>
-                  <span>03.</span>Contact
-                </motion.a>
+                    <Link
+                      activeClass="active"
+                      to="contact"
+                      spy={true}
+                      smooth={true}
+                      offset={-70}
+                      duration={500}
+                    >
+                      <span>03.</span>Contact
+                    </Link>
+
+                </motion.div>
                 <motion.button 
                   variants={item}
                   className={classes.navbarButton}>
-                  <a className={classes.navbarLink} href="">
+                  <a href={resume} className={classes.navbarLink} 
+                  >
                     Resume
                   </a>
                 </motion.button>

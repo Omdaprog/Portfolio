@@ -64,8 +64,8 @@ function RightBar() {
       className={classes.Bar}>
       <ul>
         <li>
-          <a href="">
-            imed.ben.kalia@gmail.com
+          <a href="mailto:imed.ben.kaliaa@gmail.com">
+            imed.ben.kaliaa@gmail.com
           </a>
         </li>
       </ul>
