@@ -1,16 +1,19 @@
 import HeroSection from "./components/sections/HeroSection"
+import AboutSection from "./components/sections/AboutSection";
+import ProjectSection from "./components/sections/ProjectSection";
+import ContactSection from "./components/sections/ContactSection";
+import WorkPlacement from "./components/sections/WorkPlacement";
+
 import LeftBar from "./components/LeftBar";
 import Navbar from "./components/Navbar"
 import RightBar from "./components/RightBar";
 import Hidden from '@material-ui/core/Hidden';
-import "./style.css"
-import AboutSection from "./components/sections/AboutSection";
-import ProjectSection from "./components/sections/ProjectSection";
-import ContactSection from "./components/sections/ContactSection";
 import Footer from "./components/sections/Footer";
+import "./style.css"
 
 
 import 'firebase/storage'
+import OtherProject from "./components/sections/OtherProject";
 
 
 function App() {
@@ -27,7 +30,9 @@ function App() {
           <main>
             <HeroSection />
             <AboutSection />
+            <WorkPlacement />
             <ProjectSection />
+            <OtherProject />
             <ContactSection />
           </main>
         <Footer />

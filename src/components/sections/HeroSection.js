@@ -149,12 +149,12 @@ function HeroSection() {
       <motion.div variants={item} className={classes.content}>
         <p>
           I'm a Self-Taught software developer who specializes in building Web App. Currently,
-          I'm student in  <a href="https://upstatement.com/">ISIMA </a>
+          I'm student in  <a target="_blank"  rel="noreferrer" href="http://www.isima.rnu.tn/">ISIMA </a>
           , and focused on building Web app products.
         </p>
       </motion.div>
       <motion.div variants={item} className={classes.button}>
-        <a href="mailto:imed.ben.kaliaa@gmail.com" className={classes.emailLink}>
+        <a target="_blank"  rel="noreferrer" href="mailto:imed.ben.kaliaa@gmail.com" className={classes.emailLink}>
           Get In Touch
         </a>
       </motion.div>

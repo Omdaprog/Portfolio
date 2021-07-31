@@ -91,7 +91,6 @@ function ProjectSection() {
       className={classes.section}
     >
       <h2 ref={ref} className={classes.title}>Some Things I’ve Built</h2>
-      {console.log(projects ? projects : false)}
       {projects ? (projects.map((project, index) => (
         <div style={{ margin: "5% 0 10% 0" }}>
           <ProjectItem
