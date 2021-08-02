@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
-import image from "../../image/image.JPG"
+import image from "../../image/image.jpg"
 
 
 
@@ -48,9 +48,16 @@ const useStyle = makeStyles((theme) => ({
   content: {
     fontSize: 17,
     wordSpacing: "0.08em",
+    width: "auto",
+    [theme.breakpoints.down("xs")]: {
+      width: 280, 
+    },
     "& ul": {
       display: "grid",
-      gridTemplateColumns: "repeat(2, minmax(140px, 200px))",
+      gridTemplateColumns: "repeat(3, minmax(140px, 200px))",
+      [theme.breakpoints.down("xs")]: {
+        gridTemplateColumns: "repeat(2, minmax(140px, 200px))",
+      },
       padding: 0,
       margin: "20px 0px 0px",
       overflow: "hidden",
@@ -146,18 +153,20 @@ function AboutSection() {
         <Grid item md={7}>
           <div className={classes.content}>
             <p>
-              From 2018, the moment i produced "Hello World" in the console of my first application, i knew i was hooked into the world of software developer. But software developer has never been "just a job" for me, it's offred an engaging challenge to continually learn and improve my skills in creating hight quality software. 
-              What started with a simple "Hello World" has become a full-fledged passion that only gets more exciting as the years go by. 
+            I'm a Tunisian Arab woman with more than five years of experience in tech and programming. My name means dreams and I'm a real dreamer who loves sarcasm and good humour. I love also to challenge myself to be a better version of myself each time. However, my main objective is to make an impact and involve women in tech as much as possible. Outside of work I like spending time with my family, hiking, camping with my friends and discovering new places.
             </p>
             <p>Here are a few technologies I've been working with recently:</p>
 
             <ul className="skills-list">
-              <li>Python</li>
-              <li>ReactJs</li>
-              <li>Django Rest Api</li>
-              <li>CSS</li>
-              <li>Django</li>
-              <li>HTML</li>
+              <li>Android</li>
+              <li>iOS</li>
+              <li>React native</li>
+              <li>Wordpress</li>
+              <li>Java</li>
+              <li>kotlin</li>
+              <li>Swift</li>
+              <li>javascript</li>
+              <li>php</li>
             </ul>
           </div>
         </Grid>

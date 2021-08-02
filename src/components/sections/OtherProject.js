@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-
+import { db } from '../../base'
 
 const useStyle = makeStyles((theme) => ({
   section: {
@@ -63,6 +63,9 @@ const useStyle = makeStyles((theme) => ({
       textDecorationSkipInk: "auto",
       color: "inherit",
       fontWeight: 600,
+      "&:hover": {
+        color : "#64ffda"
+      }
     },
   },
   projectDescription: {
@@ -75,11 +78,12 @@ const useStyle = makeStyles((theme) => ({
     "& ul": {
       listStyle: "none",
       display: "flex",
+      flexWrap: "wrap",
       padding: 0,
       marginBottom: 10,
       "& li": {
         margin: "2% 0%",
-        marginRight: "15%",
+        marginRight: "3%",
         fontSize: 14,
       },
   }},
@@ -107,6 +111,22 @@ const useStyle = makeStyles((theme) => ({
 
 
 function OtherProject() {
+  // Firebase Database
+  const [projects, setprojects] = useState()
+
+  useEffect(() => {
+    const fetchProject = db.collection("Ahlem_Portfolio")
+      .onSnapshot(snap => {
+        let documents = [];
+        snap.forEach(doc => {
+          !("image" in doc.data()) &&
+          documents.push({...doc.data(), id: doc.id})
+        });
+        setprojects(documents);
+      })
+    return () => fetchProject();
+  }, [])
+
   // update number of item
   const [numberOfItems, setnumberOfItems] = useState(3)
   const showMoreItems= () => {
@@ -133,19 +153,24 @@ function OtherProject() {
   
   return (
     <section className={classes.section}>
-      <h2 className={classes.title}>Some Things I’ve Built</h2>
-      <Grid container spacing={3}>
-        {[0, 1, 2, 3, 4, 5, 6, 7, 8].slice(0,numberOfItems).map((value) => (
+      <h2  className={classes.title}>Other Noteworthy Projects</h2>
+      <Grid   container spacing={3}>
+      
+        {projects ? projects.slice(0,numberOfItems).map((project,value) => (
+         //"image" in project && 
+         // eslint-disable-next-line 
           <Grid 
+          
           component={motion.div}
           variants={containerVarients}
           initial="hidden"
-          animate={controls}
+          animate="visible"
           transition={{ duration: 0.75, ease: [0.645, 0.045, 0.355, 1] }}
           key={value} item lg={4}>
             <div style={{"&:hover":{marginBottom: 5,}}} className={classes.container}>
               <header style={{ width: "100%" }}>
                 <Grid
+                  
                   container
                   direction="row"
                   alignItems="center"
@@ -169,68 +194,76 @@ function OtherProject() {
                     </svg>
                   </Grid>
                   <Grid className={classes.link}>
-                    <a
-                      href="https://medium.com/stories-from-upstatement/integrating-algolia-search-with-wordpress-multisite-e2dea3ed449c"
-                      aria-label="External Link"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        role="img"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        width="20px"
+                    {"link" in project &&
+                      <a
+                        href={project.link}
+                        aria-label="External Link"
+                        target="_blank"
+                        rel="noreferrer" 
                       >
-                        <title>External Link</title>
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                        <polyline points="15 3 21 3 21 9"></polyline>
-                        <line x1="10" y1="14" x2="21" y2="3"></line>
-                      </svg>
-                    </a>
-
-                    <a
-                      href="https://github.com/bchiang7/google-keep-vue-firebase"
-                      aria-label="GitHub Link"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        role="img"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        width="20px"
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          role="img"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          width="20px"
+                        >
+                          <title>External Link</title>
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                          <polyline points="15 3 21 3 21 9"></polyline>
+                          <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                      </a>
+                    }
+                    
+                    {"github" in project &&
+                      <a
+                        href={project.github}
+                        rel="noreferrer" 
+                        aria-label="GitHub Link"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
-                        <title>GitHub</title>
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                      </svg>
-                    </a>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          role="img"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          width="20px"
+                        >
+                          <title>GitHub</title>
+                          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                        </svg>
+                      </a>
+                    }
+                    
                   </Grid>
                 </Grid>
-                <h3 ref={ref}  className={classes.projectName}><a href="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a></h3>
-                <div className={classes.projectDescription}><p>Building a custom multisite compatible WordPress plugin to build global search with Algolia </p></div>
+                
+                <h3  className={classes.projectName}><a href={project.link} target="_blank" rel="noreferrer" >{project.title}</a></h3>
+                <div className={classes.projectDescription}><p>{project.description}</p></div>
               </header>
               <footer className={classes.projectTech}>
                 <ul>
-                  {["Android", "Java", "C++"].map((tech) => (
-                    <li >{tech}</li>
+                  {project.tech.map((value) => (
+                    <li ref={ref} >{value}</li>
                   ))}
                 </ul>
               </footer>
             </div>
           </Grid>
-        ))}
+        )):false}
       </Grid>
       <button 
+      
       className={classes.button}
       onClick={showMoreItems}
       >{numberOfItems === 3 ? "Show More" : "Show Less"}</button>

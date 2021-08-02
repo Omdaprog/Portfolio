@@ -65,7 +65,7 @@ function RightBar() {
       <ul>
         <li>
           <a rel="noreferrer" target="_blank" href="mailto:imed.ben.kaliaa@gmail.com">
-            imed.ben.kaliaa@gmail.com
+            ahlem.jarrar@hotmail.com
           </a>
         </li>
       </ul>

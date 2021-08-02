@@ -219,7 +219,7 @@ function WorkPlacement() {
         transition={{ duration: 1, ease: [0.645, 0.045, 0.355, 1] }}
         className={classes.section}
         >
-            <h2 className={classes.title}>About Me</h2>
+            <h2 className={classes.title}>Where I’ve Worked</h2>
             <div
             style={(window.innerWidth < 960) ? {display: "block"} : {display: 'flex'}} 
             className={classes.root}>
@@ -245,26 +245,30 @@ function WorkPlacement() {
 
             </TabPanel>
             <TabPanel value={value} index={1}>
-                <h3 className={classes.WorkTitle}>Engineer&nbsp;<a target="_blank"  rel="noreferrer" href="http://www.isima.rnu.tn/">@ Horizontal </a></h3>
-                <p style={{fontSize: 13}}>Dec 2020 - Present</p>
-                <p className={classes.content}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita perferendis laudantium tempora </p>
-                <p className={classes.content}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita perferendis laudantium tempora </p>
-                <p className={classes.content}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita perferendis laudantium tempora </p>
+                <h3 className={classes.WorkTitle}>Mobile engineer&nbsp;<a target="_blank"  rel="noreferrer" href="http://www.isima.rnu.tn/">@ Horizontal </a></h3>
+                <p style={{fontSize: 13}}>July 2020 - Present</p>
+                <p className={classes.content}>Working on adding new features in the Horizontal main app (Tella). </p>
+                <p className={classes.content}>Migrating current app to modular architecture. </p>
+                <p className={classes.content}>Maintaining and bug fixing of all of the android projects</p>
+                <p className={classes.content}>Participating in scrum seremonies (Refinement of stories, Sprint planning, daily meetings ..).</p>
+                <p className={classes.content}>Redaction of technical documents related to the projects.</p>
 
             </TabPanel>
             <TabPanel value={value} index={2}>
-                <h3 className={classes.WorkTitle}>Engineer&nbsp;<a target="_blank"  rel="noreferrer" href="http://www.isima.rnu.tn/">@ Proxym group </a></h3>
-                <p style={{fontSize: 13}}>Dec 2020 - Present</p>
-                <p className={classes.content}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita perferendis laudantium tempora </p>
-                <p className={classes.content}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita perferendis laudantium tempora </p>
-                <p className={classes.content}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita perferendis laudantium tempora </p>
+                <h3 className={classes.WorkTitle}>Android engineer&nbsp;<a target="_blank"  rel="noreferrer" href="http://www.isima.rnu.tn/">@ Proxym group </a></h3>
+                <p style={{fontSize: 13}}>Oct 2017 - September 2020</p>
+                <p className={classes.content}>Building and conception of multiple apps for Android (Play store submission). </p>
+                <p className={classes.content}>Supporting junior developers in all the different aspects of the project. </p>
+                <p className={classes.content}>Maintaining and reviewing existing applications.</p>
+                <p className={classes.content}>Working as an android consultant remotely with Betterise company</p>
+                <p className={classes.content}>Redaction of technical documents related to the projects</p>
             </TabPanel>
             <TabPanel value={value} index={3}>
                 <h3 className={classes.WorkTitle}>Engineer &nbsp;<a target="_blank"  rel="noreferrer" href="http://www.isima.rnu.tn/">@ Azurreo </a></h3>
                 <p style={{fontSize: 13}}>Dec 2020 - Present</p>
-                <p className={classes.content}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita perferendis laudantium tempora </p>
-                <p className={classes.content}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita perferendis laudantium tempora </p>
-                <p className={classes.content}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita perferendis laudantium tempora </p>
+                <p className={classes.content}>Developing application for Android/iOS. </p>
+                <p className={classes.content}>Maintaining and bug fixing.</p>
+                <p className={classes.content}>Redaction of technical documents related to the projects.</p>
 
             </TabPanel>
             
