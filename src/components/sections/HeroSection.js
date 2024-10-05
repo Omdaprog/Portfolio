@@ -141,16 +141,14 @@ function HeroSection() {
         <h1>Hi, my name is</h1>
       </motion.div>
       <motion.div variants={item} className={classes.content}>
-        <h2 className={classes.bigheading}>Ahlem Jarra.</h2>
+        <h2 className={classes.bigheading}>Imededdine Ben Kalia.</h2>
       </motion.div>
       <motion.div variants={item} className={classes.content}>
-        <h3 className={classes.bigheading}>I build things for mobile.</h3>
+        <h3 className={classes.bigheading}>I build things for Web.</h3>
       </motion.div>
       <motion.div variants={item} className={classes.content}>
         <p>
-        Android engineer with +5 years of experience who loves digging through manuals in order to build
-or fix things. Develop and participate in building +10 android applications with efficient,
-maintainable, and reusable code.
+        Shopify Full Stack Engineer with around 4 years of experience, passionate about building efficient, maintainable, and scalable solutions. Developed and contributed to the creation of multiple custom Shopify apps and headless eCommerce solutions 
         </p>
       </motion.div>
       <motion.div variants={item} className={classes.button}>

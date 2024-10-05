@@ -80,29 +80,28 @@ const useStyle = makeStyles((theme) => ({
   },
 
   imageContainer: {
+    // position: "relative",
+    // maxWidth: 300,
     position: "relative",
-    maxWidth: 300,
+    display: "inline-block",
   },
   imageBorder: {
-    border: "2px solid rgb(100, 255, 218)",
-    width: "100%",
-    height: 300,
-    top: 30,
-    right: -30,
-    position: "relative",
-    borderRadius: "1%",
-    [theme.breakpoints.between(0,375)]: {
-      width: "95%",
-      height: 235,
-    },
+    position: "absolute", /* Position the frame relative to the container */
+    top: 20, /* Adjust to create the slight offset */
+    left: 20,
+    right: -20,
+    bottom: -15, /* Adjust to create the slight offset */
+    zIndex: 0, /* Behind the image */
+    border: "2px solid rgb(100, 255, 218)", /* Optional: Add a border to enhance frame effect */
   },
   image: {
-    position: "absolute",
-    top: 0,
-    right: 0,
+    "position": "relative",
+    "display": "inline-block", 
     "& img": {
       width: "100%",
-      borderRadius: "1%",
+      height: "100%",
+      objectFit: "cover",
+
     },
     "&::after": {
       width: "100%",
@@ -121,10 +120,8 @@ const useStyle = makeStyles((theme) => ({
 
 function AboutSection() {
   const classes = useStyle();
-
   //Border animation
   const [BorderAnimation, setBorderAnimation] = useState(false)
-
   // Make framer motion animation work when the dom element in-view
   const containerVarients = {
     hidden: { y: 30, opacity: 0},
@@ -136,8 +133,6 @@ function AboutSection() {
     if (inView) {
       controls.start("visible");
     }
-
-    console.log();
   }, [controls, inView]);
   return (
     <motion.section
@@ -153,20 +148,20 @@ function AboutSection() {
         <Grid item md={7}>
           <div className={classes.content}>
             <p>
-            I'm a Tunisian Arab woman with more than five years of experience in tech and programming. My name means dreams and I'm a real dreamer who loves sarcasm and good humour. I love also to challenge myself to be a better version of myself each time. However, my main objective is to make an impact and involve women in tech as much as possible. Outside of work I like spending time with my family, hiking, camping with my friends and discovering new places.
+            Highly skilled Full-Stack Shopify-plus Developer with over 3 years of experience in crafting dynamic, user-centric web applications. Expertise spans developing custom Shopify apps to deploying scalable web solutions using cutting-edge technologies like Next.js, Remix.js, AWS and Google Cloud platforms. Thrive in high-pressure environments, and consistently deliver innovative solutions that meet and exceed project goals. Strong problem-solving abilities, combined with a passion for continuous learning help improve and expand my skillset.
             </p>
             <p>Here are a few technologies I've been working with recently:</p>
 
             <ul className="skills-list">
-              <li>Android</li>
-              <li>iOS</li>
-              <li>React native</li>
-              <li>Wordpress</li>
-              <li>Java</li>
-              <li>kotlin</li>
-              <li>Swift</li>
-              <li>javascript</li>
-              <li>php</li>
+              <li>JavaScript</li>
+              <li>TypeScript</li>
+              <li>Shopify-Plus</li>
+              <li>AWS</li>
+              <li>Next.js</li>
+              <li>Remix.js</li>
+              <li>Hydrogen</li>
+              <li>Liquid</li>
+              <li>Framer Motion</li>
             </ul>
           </div>
         </Grid>
