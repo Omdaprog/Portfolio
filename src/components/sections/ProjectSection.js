@@ -29,7 +29,7 @@ const useStyle = makeStyles((theme) => ({
     "&:before": {
       position: "relative",
       bottom: -2,
-      counterIncrement: "section 2",
+      counterIncrement: "section 3",
       content: '"0" counter(section) "."',
       marginRight: 15,
       color: "rgb(100, 255, 218)",
@@ -52,6 +52,8 @@ const useStyle = makeStyles((theme) => ({
 function ProjectSection() {
   const classes = useStyle();
 
+
+  // Firebase Database
   const [projects, setprojects] = useState()
 
   useEffect(() => {
@@ -59,9 +61,11 @@ function ProjectSection() {
       .onSnapshot(snap => {
         let documents = [];
         snap.forEach(doc => {
+          doc.data().image != null &&
           documents.push({...doc.data(), id: doc.id})
         });
         setprojects(documents);
+        
       })
     return () => fetchProject();
   }, [])
@@ -91,15 +95,15 @@ function ProjectSection() {
       className={classes.section}
     >
       <h2 ref={ref} className={classes.title}>Some Things I’ve Built</h2>
-      {console.log(projects ? projects : false)}
       {projects ? (projects.map((project, index) => (
-        <div style={{ margin: "5% 0 10% 0" }}>
+        <div key={index} style={{ margin: "5% 0 10% 0" }}>
           <ProjectItem
             key={index}
             even={index % 2 === 0 ? true : false}
             item={project}
           />
         </div>
+        
       ))) : false}
       
     </motion.section>

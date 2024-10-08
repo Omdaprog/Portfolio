@@ -90,7 +90,7 @@ function ContactSection() {
         always open. Whether you have a question or just want to say hi, I'll
         try my best to get back to you!
       </p>
-      <a href="mailto:imed.ben.kaliaa@gmail.com" className={classes.button}>Say Hello</a>
+      <a target="_blank"  rel="noreferrer" href="https://mail.google.com/mail/?view=cm&fs=1&to=imed.ben.kaliaa@gmail.com" className={classes.button}>Say Hello</a>
     </motion.section> 
   );
 }

@@ -64,7 +64,7 @@ function RightBar() {
       className={classes.Bar}>
       <ul>
         <li>
-          <a href="mailto:imed.ben.kaliaa@gmail.com">
+          <a rel="noreferrer" target="_blank" href="mailto:imed.ben.kaliaa@gmail.com">
             imed.ben.kaliaa@gmail.com
           </a>
         </li>

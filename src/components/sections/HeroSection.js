@@ -141,20 +141,18 @@ function HeroSection() {
         <h1>Hi, my name is</h1>
       </motion.div>
       <motion.div variants={item} className={classes.content}>
-        <h2 className={classes.bigheading}>Imed Ben Kalia.</h2>
+        <h2 className={classes.bigheading}>Imededdine Ben Kalia.</h2>
       </motion.div>
       <motion.div variants={item} className={classes.content}>
-        <h3 className={classes.bigheading}>I build things for the web.</h3>
+        <h3 className={classes.bigheading}>I build things for Web.</h3>
       </motion.div>
       <motion.div variants={item} className={classes.content}>
         <p>
-          I'm a Self-Taught software developer who specializes in building Web App. Currently,
-          I'm student in  <a href="https://upstatement.com/">ISIMA </a>
-          , and focused on building Web app products.
+        Shopify Full Stack Engineer with around 4 years of experience, passionate about building efficient, maintainable, and scalable solutions. Developed and contributed to the creation of multiple custom Shopify apps and headless eCommerce solutions 
         </p>
       </motion.div>
       <motion.div variants={item} className={classes.button}>
-        <a href="mailto:imed.ben.kaliaa@gmail.com" className={classes.emailLink}>
+        <a target="_blank"  rel="noreferrer" href="https://mail.google.com/mail/?view=cm&fs=1&to=imed.ben.kaliaa@gmail.com" className={classes.emailLink}>
           Get In Touch
         </a>
       </motion.div>
