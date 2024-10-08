@@ -105,7 +105,7 @@ const useStyle = makeStyles((theme) => ({
     },
     "&::after": {
       width: "100%",
-      height: "98%",
+      height: "99%",
       content: '""',
       background: "rgb(0 64 255 / 32%)",
       position: "absolute",

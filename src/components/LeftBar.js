@@ -60,7 +60,7 @@ function LeftBar() {
       className={classes.Bar}>
       <ul>
         <li>
-          <a target="_blank" rel="noreferrer" href="https://github.com/ahlem-jarrar">
+          <a target="_blank" rel="noreferrer" href="https://github.com/Omdaprog">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               role="img"
@@ -77,7 +77,7 @@ function LeftBar() {
           </a>
         </li>
         <li>
-          <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/ahlem-jarrar/">
+          <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/imed-ben-kalia/">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               role="img"

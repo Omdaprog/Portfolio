@@ -152,7 +152,7 @@ function HeroSection() {
         </p>
       </motion.div>
       <motion.div variants={item} className={classes.button}>
-        <a target="_blank"  rel="noreferrer" href="mailto:ahlem.jarrar@hotmail.com" className={classes.emailLink}>
+        <a target="_blank"  rel="noreferrer" href="https://mail.google.com/mail/?view=cm&fs=1&to=imed.ben.kaliaa@gmail.com" className={classes.emailLink}>
           Get In Touch
         </a>
       </motion.div>

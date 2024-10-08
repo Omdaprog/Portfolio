@@ -57,7 +57,7 @@ function ProjectSection() {
   const [projects, setprojects] = useState()
 
   useEffect(() => {
-    const fetchProject = db.collection("Ahlem_Portfolio")
+    const fetchProject = db.collection("portfolio")
       .onSnapshot(snap => {
         let documents = [];
         snap.forEach(doc => {
@@ -96,7 +96,7 @@ function ProjectSection() {
     >
       <h2 ref={ref} className={classes.title}>Some Things I’ve Built</h2>
       {projects ? (projects.map((project, index) => (
-        <div style={{ margin: "5% 0 10% 0" }}>
+        <div key={index} style={{ margin: "5% 0 10% 0" }}>
           <ProjectItem
             key={index}
             even={index % 2 === 0 ? true : false}

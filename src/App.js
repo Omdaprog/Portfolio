@@ -3,7 +3,6 @@ import AboutSection from "./components/sections/AboutSection";
 import ProjectSection from "./components/sections/ProjectSection";
 import ContactSection from "./components/sections/ContactSection";
 import WorkPlacement from "./components/sections/WorkPlacement";
-import OtherProject from "./components/sections/OtherProject";
 
 import LeftBar from "./components/LeftBar";
 import Navbar from "./components/Navbar"
@@ -32,7 +31,7 @@ function App() {
             <AboutSection />
             <WorkPlacement />
             <ProjectSection />
-            <OtherProject />
+            {/* <OtherProject /> */}
             <ContactSection />
           </main>
         <Footer />

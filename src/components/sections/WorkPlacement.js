@@ -70,36 +70,38 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
     },
 
-
-    section: {
-        margin: "0px auto",
-        padding: "100px 0px",
-        maxWidth: 700,
-    },
-    WorkTitle: {
+    titleContainer: {
+        fontFamily: "Arial, sans-serif",
+        fontSize: "1.5rem",
         display: "flex",
+        flexWrap: "wrap",
         alignItems: "center",
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '1.2rem',
+        },
+
+    },
+
+    jobTitle: {
+        marginTop: 15,
+        color: "white",
+        fontWeight: "bold",
+    },
+
+    at: {
+        margin: "0 5px",
+        color: "#aaa",
+    },
+
+    companyName: {
+        color: '#7FFFD4', // light green color for company name
+        fontWeight: 'bold',
+        display: "inline-block",
+        textDecoration: "none",
+        textDecorationSkipInk: "auto",
         position: "relative",
-        margin: "10px 0px 5px",
-        width: "100%",
-        fontSize: "clamp(16px,5vw,18px)",
-        whiteSpace: "nowrap",
-        fontWeight: 600,
-        color: "#ccd6f6",
-        lineHeight: 1.1,
-        "& a": {
-            display: "inline-block",
-            textDecoration: "none",
-            textDecorationSkipInk: "auto",
-            position: "relative",
-            transition: "all 0.25s cubic-bezier(0.645,0.045,0.355,1)",
-            cursor: "pointer",
-            color: "#64ffda",
-        },
-        "& a:hover": {
-            outline: 0,
-        },
-        "& a::after": {
+        transition: "all 0.25s cubic-bezier(0.645,0.045,0.355,1)",
+        "&::after": {
             content: '""',
             display: "block",
             width: 0,
@@ -110,10 +112,21 @@ const useStyles = makeStyles((theme) => ({
             transition: "all 0.25s cubic-bezier(0.645,0.045,0.355,1)",
             opacity: 0.5,
         },
-        "& a:hover::after": {
+        "&:hover": {
+            outline: 0,
+        },
+        "&:hover::after": {
             width: "100%",
         },
     },
+
+
+    section: {
+        margin: "0px auto",
+        padding: "100px 0px",
+        maxWidth: 1000,
+    },
+
     title: {
         display: "flex",
         alignItems: "center",
@@ -188,32 +201,31 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-const AllTabs = ({ classes }) => {
-    return ProfessionalExperianceData.map((element, index) => {
-        console.log("index ====> ", index)
-        return (
-            <StyledTab className={classes.styledtab} label={element.ComapnyName} {...a11yProps(index)} />
-        )
-    })
-}
 
-const TabPannel = ({ classes, value, data, index, reference }) => {
+
+const TabPanelBox = ({ classes, value, data, index, reference }) => {
     return (
         <TabPanel value={value} index={index}>
-            <h3 ref={reference || null} className={classes.WorkTitle}>{data.Position} &nbsp;<a target="_blank" rel="noreferrer" href="http://www.isima.rnu.tn/">@ Horizontal </a></h3>
-            <p style={{ fontSize: 13 }}>July 2020 - Present</p>
-            <p className={classes.content}>Working on adding new features in the Horizontal main app (Tella). </p>
-            <p className={classes.content}>Migrating current app to modular architecture. </p>
-            <p className={classes.content}>Maintaining and bug fixing of all of the android projects</p>
-            <p className={classes.content}>Participating in scrum seremonies (Refinement of stories, Sprint planning, daily meetings ..).</p>
-            <p className={classes.content}>Redaction of technical documents related to the projects.</p>
+            {/* <h3 ref={reference || null} className={classes.WorkTitle}>{data.Position} &nbsp;<p target="_blank" rel="noreferrer" href="http://www.isima.rnu.tn/">@ {data.ComapnyName} </p></h3> */}
+            <div ref={reference || null} class={classes.titleContainer}>
+                <span class={classes.jobTitle}>{data.Position}</span>
+                <span class={classes.at}>@</span>
+                <span class={classes.companyName}>{data.ComapnyName}</span>
+            </div>
+            <p style={{ fontSize: 13 }}>{data.Location}</p>
+            <p style={{ fontSize: 13 }}>{data.Duration}</p>
+            {
+                data.Resposabilities.map((Resposabilitie, index) => {
+                    return <p key={index} className={classes.content}> {Resposabilitie} </p>
+                })
+            }
         </TabPanel>
     )
 }
 
-const AllTabPannels = ({classes, value, reference}) => {
+const AllTabPannels = ({ classes, value, reference }) => {
     return ProfessionalExperianceData.map((element, index) => {
-        return  <TabPannel reference={reference} classes={classes} data={element} value={value} index={index}  />
+        return <TabPanelBox key={index} reference={reference} classes={classes} data={element} value={value} index={index} />
     })
 }
 
@@ -259,49 +271,12 @@ function WorkPlacement() {
                     aria-label="Vertical tabs example"
 
                 >
-                    <AllTabs classes={classes} />
                     <StyledTab className={classes.styledtab} label={"SKRATCH©"} {...a11yProps(2)} />
                     <StyledTab className={classes.styledtab} label={"ONE TIME CODE"} {...a11yProps(3)} />
                 </StyledTabs>
 
 
                 <AllTabPannels classes={classes} value={value} reference={ref} />
-                {/* <TabPanel value={value} index={0}>
-                    <h3 ref={ref} className={classes.WorkTitle}>Founder CEO &nbsp;<a target="_blank" rel="noreferrer" href="http://www.isima.rnu.tn/">@ One Time Code </a></h3>
-                    <p style={{ fontSize: 13 }}>Dec 2020 - Present</p>
-                    <p className={classes.content}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita perferendis laudantium tempora </p>
-                    <p className={classes.content}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita perferendis laudantium tempora </p>
-                    <p className={classes.content}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita perferendis laudantium tempora </p>
-
-                </TabPanel>
-                <TabPanel value={value} index={1}>
-                    <h3 className={classes.WorkTitle}>Mobile engineer&nbsp;<a target="_blank" rel="noreferrer" href="http://www.isima.rnu.tn/">@ Horizontal </a></h3>
-                    <p style={{ fontSize: 13 }}>July 2020 - Present</p>
-                    <p className={classes.content}>Working on adding new features in the Horizontal main app (Tella). </p>
-                    <p className={classes.content}>Migrating current app to modular architecture. </p>
-                    <p className={classes.content}>Maintaining and bug fixing of all of the android projects</p>
-                    <p className={classes.content}>Participating in scrum seremonies (Refinement of stories, Sprint planning, daily meetings ..).</p>
-                    <p className={classes.content}>Redaction of technical documents related to the projects.</p>
-
-                </TabPanel>
-                <TabPanel value={value} index={2}>
-                    <h3 className={classes.WorkTitle}>Android engineer&nbsp;<a target="_blank" rel="noreferrer" href="http://www.isima.rnu.tn/">@ Proxym group </a></h3>
-                    <p style={{ fontSize: 13 }}>Oct 2017 - September 2020</p>
-                    <p className={classes.content}>Building and conception of multiple apps for Android (Play store submission). </p>
-                    <p className={classes.content}>Supporting junior developers in all the different aspects of the project. </p>
-                    <p className={classes.content}>Maintaining and reviewing existing applications.</p>
-                    <p className={classes.content}>Working as an android consultant remotely with Betterise company</p>
-                    <p className={classes.content}>Redaction of technical documents related to the projects</p>
-                </TabPanel>
-                <TabPanel value={value} index={3}>
-                    <h3 className={classes.WorkTitle}>Engineer &nbsp;<a target="_blank" rel="noreferrer" href="http://www.isima.rnu.tn/">@ Azurreo </a></h3>
-                    <p style={{ fontSize: 13 }}>Dec 2020 - Present</p>
-                    <p className={classes.content}>Developing application for Android/iOS. </p>
-                    <p className={classes.content}>Maintaining and bug fixing.</p>
-                    <p className={classes.content}>Redaction of technical documents related to the projects.</p>
-
-                </TabPanel> */}
-
             </div>
         </motion.section>
 

@@ -38,7 +38,7 @@ function Footer() {
   const classes = useStyle();
   return (
     <footer className={classes.footer}>
-      <div> Designed & Built by Ahlem Jarra</div>
+      <div> Designed & Built by Imededdine Ben Kalia</div>
       <div>
         <a target="_blank"  rel="noreferrer" href="https://github.com/ahlem-jarrar">
           <svg
