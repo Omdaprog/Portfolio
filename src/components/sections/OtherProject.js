@@ -226,7 +226,6 @@ function OtherProject() {
                         rel="noreferrer" 
                         aria-label="GitHub Link"
                         target="_blank"
-                        rel="noopener noreferrer"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"

@@ -14,8 +14,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll"
 import resume from "../file/resume.pdf"
-import logo from "../image/drawing.svg"
-
+import Logo from "../image/drawing";
 const useStyles = makeStyles((theme) => ({
   logo: {
     color: "#64ffda",
@@ -228,7 +227,10 @@ function Navbar() {
             transition={{ duration: 0.75, ease: [0.645, 0.045, 0.355, 1] }}
             className={classes.menuButton}
           >
-            <img src={logo} className={classes.logo} alt="logo" />
+            {/* <img src={logo} className={classes.logo} alt="logo" /> */}
+            <div>
+              <Logo />
+            </div>
             
           </IconButton>
 
