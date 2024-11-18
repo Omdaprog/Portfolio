@@ -148,7 +148,7 @@ function HeroSection() {
       </motion.div>
       <motion.div variants={item} className={classes.content}>
         <p>
-        Shopify Full Stack Engineer with around 4 years of experience, passionate about building efficient, maintainable, and scalable solutions. Developed and contributed to the creation of multiple custom Shopify apps and headless eCommerce solutions 
+        Shopify Full Stack Engineer with 4 years of experience, passionate about building efficient, maintainable, and scalable solutions. Developed and contributed to the creation of multiple custom Shopify apps and headless eCommerce solutions 
         </p>
       </motion.div>
       <motion.div variants={item} className={classes.button}>

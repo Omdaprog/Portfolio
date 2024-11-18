@@ -23,10 +23,14 @@ within budget`
     },
     {
         ComapnyName: "ONE TIME CODE",
-        Position: "Full Stack Developer",
+        Position: "Full Stack Shopify Developer",
         Location: "Msaken, Tunisia",
-        Duration: "08/2020 – 05/2021",
+        Duration: "08/2020 – 08/2021",
         Resposabilities: [
+            `Developed, customized, and maintained Shopify stores, including developing bespoke themes and implementing
+third-party app integrations, leading to enhanced e-commerce functionality and improved client sales`,
+            `Optimized Shopify site performance by implementing best practices in Liquid, JavaScript, and CSS, achieving faster
+load times and superior user experiences`,
             `Designed and implemented end-to-end web applications for multiple projects, using HTML, CSS, JavaScript,
 Next.js, AWS Cloud, GSAP, and Framer Motion, resulting in seamless user experiences and enhanced user
 engagement.`,

@@ -83,7 +83,6 @@ const useStyles = makeStyles((theme) => ({
     },
 
     jobTitle: {
-        marginTop: 15,
         color: "white",
         fontWeight: "bold",
     },
@@ -94,6 +93,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     companyName: {
+        marginTop: 5 ,
         color: '#7FFFD4', // light green color for company name
         fontWeight: 'bold',
         display: "inline-block",

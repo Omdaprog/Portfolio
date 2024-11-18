@@ -148,7 +148,7 @@ function AboutSection() {
         <Grid item md={7}>
           <div className={classes.content}>
             <p>
-            Highly skilled Full-Stack Shopify-plus Developer with around 4 years of experience in crafting dynamic, user-centric web applications. Expertise spans developing custom Shopify apps to deploying scalable web solutions using cutting-edge technologies like Next.js, Remix.js, AWS and Google Cloud platforms. Thrive in high-pressure environments, and consistently deliver innovative solutions that meet and exceed project goals. Strong problem-solving abilities, combined with a passion for continuous learning help improve and expand my skillset.
+            Highly skilled Full-Stack Shopify-plus Developer with 4 years of experience in crafting dynamic, user-centric web applications. Expertise spans developing custom Shopify apps to deploying scalable web solutions using cutting-edge technologies like Next.js, Remix.js, AWS and Google Cloud platforms. Thrive in high-pressure environments, and consistently deliver innovative solutions that meet and exceed project goals. Strong problem-solving abilities, combined with a passion for continuous learning help improve and expand my skillset.
             </p>
             <p>Here are a few technologies I've been working with recently:</p>
 
